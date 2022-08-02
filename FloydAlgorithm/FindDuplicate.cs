@@ -33,5 +33,17 @@ namespace FloydAlgorithm
 
             return ptr1;
         }
-    }
+
+        public static int findDuplicateLinq(int[] nums)
+        {
+            var qryDuplicate = nums.GroupBy(x => x)
+              .Where(g => g.Count() > 1)
+              .Select(y => y)
+              .ToList();
+
+            var ret = qryDuplicate.FirstOrDefault();
+
+            return ret.ElementAt(0);
+        }
+    }    
 }
